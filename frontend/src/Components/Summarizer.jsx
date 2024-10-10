@@ -7,6 +7,7 @@ export default function Summarizer() {
   const [documents, setDocuments] = useState([]);
   const [file, setFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [summary,setSummary] = useState('Click to generate summary')
 
   const fetchDocuments = async () => {
     try {
@@ -40,9 +41,25 @@ export default function Summarizer() {
     }
   };
 
-  const generateSummary = (docId) => {
-    console.log(`Generating summary for document ID: ${docId}`);
-    // Add logic to generate the summary
+  const generateSummary = async (docURL) => {
+    console.log(`Generating summary for document ID: ${docURL}`);
+
+    const response = await fetch('http://localhost:8000/summarize', {
+      method: 'POST',
+      headers: {'Content-Type' : 'application/json'},
+      body: JSON.stringify({docURL}),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error generating summary:', errorData);
+        setSummary(`Error: ${errorData.detail}`); // Display the error message
+        return;
+    }
+
+    const data = await response.json();
+    console.log(data);
+    setSummary(data);
   };
 
   return (
@@ -99,11 +116,12 @@ export default function Summarizer() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button
-                        onClick={() => generateSummary(doc.id)}
+                        onClick={() => generateSummary(doc.downloadURL)}
                         className="text-blue-600 hover:text-blue-900 focus:outline-none focus:underline"
                       >
                         Generate Summary
                       </button>
+                      <div>{summary && <p>Summary: {summary}</p>}</div>
                     </td>
                   </tr>
                 ))}

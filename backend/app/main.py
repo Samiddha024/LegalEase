@@ -2,16 +2,16 @@ from fastapi import FastAPI, HTTPException, Request
 import requests
 from fastapi.middleware.cors import CORSMiddleware
 from transformers import PegasusTokenizer, AutoModelForSeq2SeqLM
-import fitz  # PyMuPDF
+import fitz 
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Specify origins
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],  
+    allow_headers=["*"], 
 )
 
 # Load the tokenizer and model

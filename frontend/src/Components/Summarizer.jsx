@@ -59,7 +59,7 @@ export default function Summarizer() {
 
     const data = await response.json();
     console.log(data);
-    setSummary(data);
+    setSummary(data['summary']);
   };
 
   return (

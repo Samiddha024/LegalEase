@@ -10,11 +10,6 @@ from docx import Document
 from reportlab.pdfgen import canvas
 import json
 
-os.environ["API_KEY"] = "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"
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_API_KEY"] = "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"
-os.environ["LANGCHAIN_PROJECT"] = "legal-ease"
 
 Model = "llama-3.1-70b-versatile"
 model = ChatGroq(api_key=os.environ["API_KEY"], model_name=Model, temperature=0)

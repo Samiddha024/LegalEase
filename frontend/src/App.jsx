@@ -8,7 +8,7 @@ import Summarizer from './Components/Summarizer';
 import Drafter from './Components/Drafter';
 import Chatbot from './Components/Chatbot';
 import About from './Components/About';
-
+import DocumnetQnA from './Components/DocumnetQnA';
 
 
 // const db = getDatabase(app);
@@ -34,7 +34,7 @@ export default function App() {
           <Route path="/summarizer" element={<Summarizer />} />
           <Route path="/drafter" element={<Drafter />} />
           <Route path="/chatbot" element={<Chatbot />} />
-          
+          <Route path="/documentQ&A" element={<DocumnetQnA/>} />
         </Routes>
 
         {/* Place the button inside the Router */}

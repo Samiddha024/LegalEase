@@ -55,6 +55,12 @@ export default function Dashboard() {
                   ChatBot
                 </Link>
               </li>
+              <li>
+                <Link to="/documentQ&A" className="flex items-center p-2 rounded hover:bg-gray-800">
+                  <MessageSquare className="h-5 w-5 mr-2" />
+                   Documnet Q&A
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -91,6 +97,14 @@ export default function Dashboard() {
             description="Get instant answers to your legal research questions."
             link="/chatbot"
           />
+
+            <DashboardCard
+            icon={<MessageSquare className="h-8 w-8 text-blue-600" />}
+            title="Documnet Q&A"
+            description="Understand your Documnets "
+            link="/documentQ&A"
+          />
+
         </div>
       </main>
     </div>

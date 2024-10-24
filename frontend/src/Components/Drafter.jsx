@@ -12,7 +12,7 @@ function Drafter() {
 
   const generateDocument = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/generate_document', {
+      const response = await axios.post('http://localhost:8000/drafter/generate_document', {
         case_details: caseDetails,
         ipc_sections: ipcSections.split(',').map(item => item.trim()),
       });
@@ -24,7 +24,7 @@ function Drafter() {
 
   const editDocument = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/edit_document', {
+      const response = await axios.post('http://localhost:8000/drafter/edit_document', {
         document_content: generatedDocument,
       });
       setEditedDocument(response.data.document_content);
@@ -35,7 +35,7 @@ function Drafter() {
 
   const exportDocument = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/export_document?format=${exportFormat}", {
+      const response = await axios.post("http://localhost:8000/drafter/export_document?format=${exportFormat}", {
         document_content: editedDocument || generatedDocument,
       });
       setMessage(response.data.message);

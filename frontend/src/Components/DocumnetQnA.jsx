@@ -34,7 +34,7 @@ export default function DocumnetQnA() {
 
     try {
       setLoading(true)
-      const response = await axios.post(`http://localhost:8000/ask_query`, formData, {
+      const response = await axios.post(`http://localhost:8000/doc-qna/ask_query`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

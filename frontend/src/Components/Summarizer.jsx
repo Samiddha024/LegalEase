@@ -44,7 +44,7 @@ export default function Summarizer() {
   const generateSummary = async (docURL) => {
     console.log(`Generating summary for document ID: ${docURL}`);
 
-    const response = await fetch('http://localhost:8000/summarize', {
+    const response = await fetch('http://localhost:8000/summarizer', {
       method: 'POST',
       headers: {'Content-Type' : 'application/json'},
       body: JSON.stringify({docURL}),
